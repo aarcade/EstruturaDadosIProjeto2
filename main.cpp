@@ -27,21 +27,28 @@ int main(){
 		cout << "Digite a opcao desejada: ";
     cin >> opc;
   
-  switch (opc) {
-    case 0:
+  if (opc ==0){
       cout <<"Saindo...";
-      x = false;
-   case 1:
-     ///Contar palavras
-   case 2:
-     ///Trocar palavras
-    case 3:
-    ///Imprimir lista
+      x = false;}
+  else if (opc ==1){
+      cout << "Digite a palavra a ser contada: ";
+      string palavra;
+      cin >> palavra;
+      int n = lista.contaPalavras(palavra);
+      if(n==0) cout << "Lista vazia ou palavra não encontrada.";
+      else cout << "A palavra foi encontrada "<< n << " vez(es).";
+   }
+  else if (opc ==2){}
+  else if (opc ==3){
+    //Imprimir lista
     cout << "Lista: ";
-    lista.imprime();
-    case 4:
+    lista.imprime();}
+  else if (opc ==4){
     ///Salvar arquivo
-    ;
+    cout << "Conteúdo salvo no arquivo.\n";
+    lista.salvaArquivo();
+  }else{
+     cout << "Opção não disponível.Escolha uma opção do menu. \n";
   }
-}
+ }
 }

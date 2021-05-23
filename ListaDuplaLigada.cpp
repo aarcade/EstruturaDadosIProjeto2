@@ -1,4 +1,3 @@
-#include <cstdlib>
 #include <iostream>
 #include <stdio.h>
 #include <fstream>
@@ -175,7 +174,7 @@ void ListaDuplaLigada::imprime(){
 	cout << "[ ";
 	while (cursor != NULL) {
     //Se o caracter for diferente de uma letra, e for um espcao, e um ponto e uma virgula; 
-    if(!isalpha(cursor->getInfo()) && cursor->getInfo() != ' ' && cursor->getInfo() != '.' && cursor->getInfo() != ',' ){ 
+    if(!isalpha(cursor->getInfo()) ){ 
       //Consideramos então dois espaços char;
       cout << cursor->getInfo(); 
       cursor = cursor->getProx();
@@ -187,4 +186,23 @@ void ListaDuplaLigada::imprime(){
     cursor = cursor->getProx();
 	}
 	cout << "]\n";
+}
+
+void ListaDuplaLigada::salvaArquivo(){
+  //Ainda não foi implementado.
+}
+
+int ListaDuplaLigada::contaPalavras(string palavra){
+	int cont = 0, i = 0;
+	Celula * cursor = head;
+	while(cursor != NULL){
+	  if(cursor->getInfo() != '.' && cursor->getInfo() != ',' && cursor->getInfo() != ' '){
+      if(cursor->getInfo() == palavra[i]) i++;
+		}else{
+      if(i == palavra.length()) cont++;
+			i = 0;
+		}
+		cursor = cursor->getProx();
+	}
+	return cont;
 }

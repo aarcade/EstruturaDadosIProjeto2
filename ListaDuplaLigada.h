@@ -29,4 +29,6 @@ class ListaDuplaLigada {
 	char removeAntesN(int pos);
   void leitura(string arquivo);
   void imprime();
+  void salvaArquivo();
+  int contaPalavras(string contaPalavras);
 };

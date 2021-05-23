@@ -158,3 +158,33 @@ char ListaDuplaLigada::removeAposN(int pos) {
 char ListaDuplaLigada::removeAntesN(int pos) {
 	return this->removeEmN(pos - 1);
 }
+
+void ListaDuplaLigada::leitura(string arquivo){
+  FILE * texto = fopen(arquivo.c_str(), "r+"); //Lê-se o arquivo, usamos o arquivo.c_str(), é introduzido para converter de std::string para const char*
+  char caracter;
+  while(!feof(texto)){
+    caracter = getc(texto); // armazena a informacao do arquivo no caracter
+    this -> insereFinal(caracter); // insere o caracter no final da lista
+  }
+  this->removeFinal();
+  fclose(texto);
+}
+
+void ListaDuplaLigada::imprime(){
+	Celula * cursor = head;
+	cout << "[ ";
+	while (cursor != NULL) {
+    //Se o caracter for diferente de uma letra, e for um espcao, e um ponto e uma virgula; 
+    if(!isalpha(cursor->getInfo()) && cursor->getInfo() != ' ' && cursor->getInfo() != '.' && cursor->getInfo() != ',' ){ 
+      //Consideramos então dois espaços char;
+      cout << cursor->getInfo(); 
+      cursor = cursor->getProx();
+      cout << cursor->getInfo() << ", ";
+    }else{
+      cout << cursor->getInfo();
+      if(cursor->getProx() != NULL) cout << ", ";
+    }
+    cursor = cursor->getProx();
+	}
+	cout << "]\n";
+}

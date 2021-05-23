@@ -15,7 +15,6 @@ class ListaDuplaLigada {
 	ListaDuplaLigada();
 	bool vazia();
 	int tamanho();
-	void imprimeFinal();
 	char primeiro();
 	char ultimo();
 	void insereInicio(char n);
@@ -28,4 +27,6 @@ class ListaDuplaLigada {
 	char removeEmN(int pos);
 	char removeAposN(int pos);
 	char removeAntesN(int pos);
+  void leitura(string arquivo);
+  void imprime();
 };

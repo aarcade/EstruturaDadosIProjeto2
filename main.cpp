@@ -4,13 +4,18 @@
 #include <string>
 #include <fstream>
 #include <sstream>
-//#include "ListaLigadaDupla.h"
+#include "ListaDuplaLigada.h"
 
 using namespace std;
 
 int main(){
   char x = true;
   int opc;
+  string arquivoTxt = "inteligenciaEmocional.txt";
+
+  ListaDuplaLigada lista;
+  lista.leitura(arquivoTxt);
+
   while (x){
     cout << "\n *** PROJETO 2 - ESTRUTURA DE DADOS ***\n";
     cout << "\n Ana Cecília (TIA 32084935) e Gabriel Azevedo (TIA 32020309) \n";
@@ -32,16 +37,11 @@ int main(){
      ///Trocar palavras
     case 3:
     ///Imprimir lista
+    cout << "Lista: ";
+    lista.imprime();
     case 4:
     ///Salvar arquivo
     ;
-  
-
-   
-
   }
-
-   
 }
-
 }

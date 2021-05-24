@@ -169,27 +169,32 @@ void ListaDuplaLigada::leitura(string arquivo){
   fclose(texto);
 }
 
-void ListaDuplaLigada::imprime(){
+void ListaDuplaLigada::imprime() {
 	Celula * cursor = head;
 	cout << "[ ";
 	while (cursor != NULL) {
     //Se o caracter for diferente de uma letra, e for um espcao, e um ponto e uma virgula; 
-    if(!isalpha(cursor->getInfo()) ){ 
-      //Consideramos então dois espaços char;
-      cout << cursor->getInfo(); 
+    if(!isalpha(cursor->getInfo()) && cursor->getInfo() != ' ' && cursor->getInfo() != '.' && cursor->getInfo() != ',' ){
+       //Consideramos então dois espaços char;
+      cout << cursor->getInfo();
       cursor = cursor->getProx();
       cout << cursor->getInfo() << ", ";
-    }else{
+    } else {
       cout << cursor->getInfo();
       if(cursor->getProx() != NULL) cout << ", ";
     }
-    cursor = cursor->getProx();
+		cursor = cursor->getProx();
 	}
-	cout << "]\n";
+	cout << " ]\n";
 }
 
 void ListaDuplaLigada::salvaArquivo(){
-  //Ainda não foi implementado.
+  Celula * cursor = head;
+  ofstream texto("inteligenciaEmocional.txt"); 
+  while (cursor!=NULL){
+    texto <<  cursor-> getInfo();
+    cursor = cursor-> getProx();
+  }
 }
 
 int ListaDuplaLigada::contaPalavras(string palavra){
@@ -203,6 +208,25 @@ int ListaDuplaLigada::contaPalavras(string palavra){
 			i = 0;
 		}
 		cursor = cursor->getProx();
+	}
+	return cont;
+}
+
+int ListaDuplaLigada::trocaPalavras(string palavra){
+  int cont = 0, i = 0, posicao =1, inicio= posicao-i;
+	Celula * cursor = head;
+	while(cursor != NULL){
+	  if(cursor->getInfo() != '.' && cursor->getInfo() != ',' && cursor->getInfo() != ' '){
+      if(cursor->getInfo() == palavra[i]) i++;
+		}else{
+      if(i == palavra.length()-1) {
+        ///troca aqui
+        for(int j = 0; j < palavra.length() - 1; j++) this->insereEmN(palavra[j], inicio++);
+        cont++;};
+			i = 0;
+		}
+		cursor = cursor->getProx();
+    posicao +=1;
 	}
 	return cont;
 }

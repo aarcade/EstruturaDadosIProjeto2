@@ -35,10 +35,17 @@ int main(){
       string palavra;
       cin >> palavra;
       int n = lista.contaPalavras(palavra);
-      if(n==0) cout << "Lista vazia ou palavra não encontrada.";
+      if(n==0) cout << "Lista vazia ou nenhuma palavra foi encontrada.";
       else cout << "A palavra foi encontrada "<< n << " vez(es).";
    }
-  else if (opc ==2){}
+  else if (opc ==2){
+    cout << "Digite a palavra a ser trocada: ";
+      string palavra;
+      cin >> palavra;
+      int n = lista.trocaPalavras(palavra);
+      if(n==0) cout << "Lista vazia ou nenhuma palavra foi trocada.";
+      else cout << "A palavra foi trocada.";
+  }
   else if (opc ==3){
     //Imprimir lista
     cout << "Lista: ";

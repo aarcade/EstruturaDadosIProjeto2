@@ -31,5 +31,5 @@ class ListaDuplaLigada {
   void imprime();
   void salvaArquivo();
   int contaPalavras(string palavras);
-  int trocaPalavras(string palavras);
+  int trocaPalavras(string palavra, string novaPalavra);
 };

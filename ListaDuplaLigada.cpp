@@ -212,17 +212,36 @@ int ListaDuplaLigada::contaPalavras(string palavra){
 	return cont;
 }
 
-int ListaDuplaLigada::trocaPalavras(string palavra){
-  int cont = 0, i = 0, posicao =1, inicio= posicao-i;
+int ListaDuplaLigada::trocaPalavras(string palavra, string novaPalavra){
+  int cont = 0, i = 0, posicao = 1, inicio= posicao-i;
 	Celula * cursor = head;
-	while(cursor != NULL){
+  /* while(cursor != NULL){
 	  if(cursor->getInfo() != '.' && cursor->getInfo() != ',' && cursor->getInfo() != ' '){
       if(cursor->getInfo() == palavra[i]) i++;
 		}else{
-      if(i == palavra.length()-1) {
-        ///troca aqui
-        for(int j = 0; j < palavra.length() - 1; j++) this->insereEmN(palavra[j], inicio++);
-        cont++;};
+      if(i == palavra.length()) {
+        cont++;
+
+			i = 0;
+		}}
+		cursor = cursor->getProx();
+	}
+	return cont; */
+	while(cursor != NULL){
+      if(cursor->getInfo() != '.' && cursor->getInfo() != ',' && cursor->getInfo() != ' '){
+      if(cursor->getInfo() == palavra[i]) i++;
+		}else{
+      //cout << "POS INI" << posicao;
+      if(i == palavra.length()) {
+        for(int j= 0; j<i; j++){
+          cout << posicao;
+          this->removeEmN(posicao-i);
+        }
+        for(int k = novaPalavra.length(); k >= 0; k--){
+          this-> insereEmN(novaPalavra[k], posicao-i);
+        }
+        cont++;
+        };
 			i = 0;
 		}
 		cursor = cursor->getProx();

@@ -42,7 +42,10 @@ int main(){
     cout << "Digite a palavra a ser trocada: ";
       string palavra;
       cin >> palavra;
-      int n = lista.trocaPalavras(palavra);
+       cout << "Digite a nova palavra: ";
+      string novaPalavra;
+      cin >>  novaPalavra;
+      int n = lista.trocaPalavras(palavra, novaPalavra);
       if(n==0) cout << "Lista vazia ou nenhuma palavra foi trocada.";
       else cout << "A palavra foi trocada.";
   }

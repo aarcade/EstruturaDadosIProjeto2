@@ -214,7 +214,7 @@ int ListaDuplaLigada::contaPalavras(string palavra){
 }
 
 int ListaDuplaLigada::trocaPalavras(string palavra, string novaPalavra){
-  int cont = 0, i = 0, posicao = 1, inicio= posicao-i;
+  int cont = 0, i = 0, posicao = 1;
 	Celula * cursor = head;
 	while(cursor != NULL){
       if(cursor->getInfo() != '.' && cursor->getInfo() != ',' && cursor->getInfo() != ' '){

@@ -192,8 +192,9 @@ void ListaDuplaLigada::salvaArquivo(){
   Celula * cursor = head;
   ofstream texto("inteligenciaEmocional.txt"); 
   while (cursor!=NULL){
-    texto <<  cursor-> getInfo();
-    cursor = cursor-> getProx();
+      texto <<  cursor-> getInfo();
+      cursor = cursor-> getProx();
+    
   }
 }
 
@@ -215,30 +216,24 @@ int ListaDuplaLigada::contaPalavras(string palavra){
 int ListaDuplaLigada::trocaPalavras(string palavra, string novaPalavra){
   int cont = 0, i = 0, posicao = 1, inicio= posicao-i;
 	Celula * cursor = head;
-  /* while(cursor != NULL){
-	  if(cursor->getInfo() != '.' && cursor->getInfo() != ',' && cursor->getInfo() != ' '){
-      if(cursor->getInfo() == palavra[i]) i++;
-		}else{
-      if(i == palavra.length()) {
-        cont++;
-
-			i = 0;
-		}}
-		cursor = cursor->getProx();
-	}
-	return cont; */
 	while(cursor != NULL){
       if(cursor->getInfo() != '.' && cursor->getInfo() != ',' && cursor->getInfo() != ' '){
       if(cursor->getInfo() == palavra[i]) i++;
 		}else{
-      //cout << "POS INI" << posicao;
       if(i == palavra.length()) {
         for(int j= 0; j<i; j++){
-          cout << posicao;
           this->removeEmN(posicao-i);
         }
-        for(int k = novaPalavra.length(); k >= 0; k--){
-          this-> insereEmN(novaPalavra[k], posicao-i);
+         string newPalavra = novaPalavra;
+        char newPalavraChar[newPalavra.length()];
+        for(int j = 0; j < newPalavra.length(); j++){
+          if(newPalavra[j] != EOF){
+               newPalavraChar[j] = newPalavra[j];
+          }
+         continue;
+        } 
+        for(int k = newPalavra.length(); k >= 0; k--){
+          if(isalpha(newPalavra[k])) this-> insereEmN(newPalavraChar[k], posicao-i);
         }
         cont++;
         };
